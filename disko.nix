@@ -43,15 +43,21 @@
               mountpoint = "/boot";
             };
           };
-          nix = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "btrfs";
-              mountpoint = "/nix";
-              mountOptions = [ "compress=zstd" ];
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "crypted";
+                settings.allowDiscards = true;
+                passwordFile = "/secret.key";
+                content = {
+                  type = "filesystem";
+                  format = "btrfs";
+                  mountpoint = "/nix";
+                  mountOptions = [ "compress=zstd" ];
+                };
+              };
             };
-          };
           encryptedSwap = {
             size = "8G";
             content = {
