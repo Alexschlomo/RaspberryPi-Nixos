@@ -14,6 +14,7 @@
       specialArgs = {
         inherit rpi5;
       };
+      system = "aarch64-linux";
       modules = [
         ./configuration.nix 
 	./disko.nix
