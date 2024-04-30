@@ -9,6 +9,7 @@ mkdir -p secrets/{boot,tmp}
 ```sh
 wget https://github.com/worproject/rpi5-uefi/releases/download/v0.3/RPi5_UEFI_Release_v0.3.zip
 unzip RPi5_UEFI_Release_v0.3.zip
+rm RPi5_UEFI_Release_v0.3.zip
 mv config.txt secrets/boot
 mv RPI_EFI.fd secrets/boot
 vim secrets/secrets.key #Enter your Diskencryption Key without new lines
