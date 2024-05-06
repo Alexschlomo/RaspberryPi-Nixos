@@ -1,4 +1,6 @@
-{ targetDevice ? "/dev/disk/by-uuid/93c89e92-8f2e-4522-ad32-68faed883d2f", ... }: {
+{ ... }: let
+targetDevice = "/dev/disk/by-uuid/93c89e92-8f2e-4522-ad32-68faed883d2f";
+in {
   services = {
     btrfs.autoScrub = {
       enable = true;

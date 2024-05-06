@@ -15,12 +15,19 @@ mv RPI_EFI.fd secrets/boot
 vim secrets/secrets.key #Enter your Diskencryption Key without new lines
 ```
 
+Make sure you have access to your Device via ssh e.g.
+
+```sh
+ssh-copy-id -i /home/nixos/.ssh/ed25519 nixos@<IP Address>
+```
+
 Install Flakeoutput Raspberrypi to address root@<IP Address> and copy all data. Read Diskencryption-Key 
 
 ```sh
 nix run github:nix-community/nixos-anywhere -- \
   --extra-files ./secrets \
-  --disk-encryption-keys ./secrets/secret.key \
+  --disk-encryption-keys /secret.key ./secrets/secret.key \
   --flake .#raspberrypi \
+  --build-on-remote \
   root@192.168.178.175 
 ```
